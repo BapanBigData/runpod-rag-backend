@@ -5,7 +5,7 @@ FROM nvidia/cuda:12.2.0-runtime-ubuntu22.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV OLLAMA_BASE_URL=http://localhost:11434
 
-# ✅ Use reliable mirror and install system packages
+# ✅ Use reliable mirror and install system packages + CUDA runtime library
 RUN sed -i 's|http://archive.ubuntu.com/ubuntu|http://mirror.math.princeton.edu/pub/ubuntu|g' /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y --fix-missing \
@@ -14,7 +14,8 @@ RUN sed -i 's|http://archive.ubuntu.com/ubuntu|http://mirror.math.princeton.edu/
     unzip \
     python3 \
     python3-pip \
-    python3-venv && \
+    python3-venv \
+    libcuda1-525 && \
     apt-get clean
 
 # ✅ Install Ollama manually from .deb
