@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+langchain
+python-docx
+chromadb
+ollama
+unstructured
+tqdm
+langchain-ollama
+langchain-chroma
